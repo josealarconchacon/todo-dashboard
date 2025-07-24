@@ -5,17 +5,20 @@ import AddTaskForm from "./AddTaskForm";
 
 const Sidebar = ({ stats, onAddTask }) => {
   return (
-    <div className="w-80 bg-gray-100 border-r border-gray-200 p-8">
+    <div className="w-100 bg-gray-100 border-r border-gray-200 p-8">
       {/* Header */}
       <div className="mb-10">
         <h1 className="text-3xl font-bold text-gray-900 mb-3">
           Todo Dashboard
         </h1>
-        <p className="text-gray-600 text-base">Manage your tasks efficiently</p>
+        {/* <p className="text-gray-600 text-base">Manage your tasks efficiently</p> */}
       </div>
 
+      {/* Add Task Form */}
+      <AddTaskForm onAddTask={onAddTask} />
+
       {/* Stats Cards */}
-      <div className="space-y-5 mb-10">
+      <div className="space-y-5 mb-10 mt-10">
         <StatsCard
           title="Total Tasks"
           value={stats.total}
@@ -32,7 +35,7 @@ const Sidebar = ({ stats, onAddTask }) => {
       </div>
 
       {/* Add Task Form */}
-      <AddTaskForm onAddTask={onAddTask} />
+      {/* <AddTaskForm onAddTask={onAddTask} /> */}
     </div>
   );
 };
