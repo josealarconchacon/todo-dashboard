@@ -1,19 +1,20 @@
 import React from "react";
+import { Clock } from "lucide-react";
 
 const StatsCard = ({ title, value, icon: Icon, color = "blue" }) => {
   const colors = {
-    blue: "text-blue-500",
-    green: "text-green-500",
+    blue: "text-blue-600",
+    green: "text-green-600",
     orange: "text-orange-500",
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4">
+    <div className="bg-gray-100 border border-gray-200 rounded-xl p-5 shadow-sm">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-gray-600 text-sm mb-1">{title}</p>
+          <p className="text-gray-600 text-sm font-medium mb-2">{title}</p>
           <p
-            className={`text-2xl font-bold ${
+            className={`text-3xl font-bold ${
               color === "green"
                 ? "text-green-600"
                 : color === "orange"
@@ -26,7 +27,7 @@ const StatsCard = ({ title, value, icon: Icon, color = "blue" }) => {
         </div>
         {Icon && <Icon className={`h-8 w-8 ${colors[color]}`} />}
         {!Icon && color === "orange" && (
-          <div className="w-8 h-8 border-2 border-orange-500 rounded-full"></div>
+          <Clock className="h-8 w-8 text-orange-500" />
         )}
       </div>
     </div>

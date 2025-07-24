@@ -27,8 +27,8 @@ const TaskItem = ({ todo, onUpdate, onDelete }) => {
 
   if (isEditing) {
     return (
-      <div className="bg-white border border-gray-200 rounded-lg p-6">
-        <div className="space-y-4">
+      <div className="bg-white rounded-xl p-6 shadow-sm">
+        <div className="space-y-5">
           <Input
             value={editTitle}
             onChange={(e) => setEditTitle(e.target.value)}
@@ -39,7 +39,7 @@ const TaskItem = ({ todo, onUpdate, onDelete }) => {
             onChange={(e) => setEditDescription(e.target.value)}
             placeholder="Description (optional)"
           />
-          <div className="flex space-x-2">
+          <div className="flex space-x-3">
             <Button onClick={handleSave} variant="success" size="sm">
               Save
             </Button>
@@ -53,13 +53,13 @@ const TaskItem = ({ todo, onUpdate, onDelete }) => {
   }
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6">
+    <div className="bg-white rounded-xl p-6 shadow-sm">
       <div className="flex items-start justify-between">
         <div className="flex items-start space-x-4 flex-1">
           <div className="mt-1">
             {todo.completed ? (
               <div
-                className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center cursor-pointer"
+                className="w-5 h-5 bg-green-600 rounded-full flex items-center justify-center cursor-pointer"
                 onClick={toggleComplete}
               >
                 <Check className="h-3 w-3 text-white" />
@@ -73,7 +73,7 @@ const TaskItem = ({ todo, onUpdate, onDelete }) => {
           </div>
           <div className="flex-1">
             <h3
-              className={`font-medium mb-1 ${
+              className={`font-bold text-lg mb-2 ${
                 todo.completed ? "line-through text-gray-500" : "text-gray-900"
               }`}
             >
@@ -81,7 +81,7 @@ const TaskItem = ({ todo, onUpdate, onDelete }) => {
             </h3>
             {todo.description && (
               <p
-                className={`text-sm mb-3 ${
+                className={`text-base ${
                   todo.completed
                     ? "line-through text-gray-400"
                     : "text-gray-600"
@@ -90,37 +90,39 @@ const TaskItem = ({ todo, onUpdate, onDelete }) => {
                 {todo.description}
               </p>
             )}
-            <div className="flex items-center space-x-4">
-              {todo.completed ? (
-                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                  Completed
-                </span>
-              ) : (
-                <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-900 text-white">
-                  Pending
-                </span>
-              )}
-              <span className="text-xs text-gray-500">
-                {todo.completed && todo.completedDate
-                  ? todo.completedDate
-                  : todo.createdDate}
-              </span>
-            </div>
           </div>
         </div>
-        <div className="flex items-center space-x-2 ml-4">
-          <button
-            onClick={() => setIsEditing(true)}
-            className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            <Edit className="h-4 w-4" />
-          </button>
-          <button
-            onClick={() => onDelete(todo.id)}
-            className="p-2 text-gray-400 hover:text-red-600 transition-colors"
-          >
-            <Trash2 className="h-4 w-4" />
-          </button>
+        <div className="flex items-center space-x-4 ml-4">
+          <div className="flex items-center space-x-3">
+            {todo.completed ? (
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                Completed
+              </span>
+            ) : (
+              <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-700">
+                Pending
+              </span>
+            )}
+            <span className="text-sm text-gray-500">
+              {todo.completed && todo.completedDate
+                ? todo.completedDate
+                : todo.createdDate}
+            </span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setIsEditing(true)}
+              className="p-2 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <Edit className="h-4 w-4" />
+            </button>
+            <button
+              onClick={() => onDelete(todo.id)}
+              className="p-2 text-gray-400 hover:text-red-600 transition-colors"
+            >
+              <Trash2 className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

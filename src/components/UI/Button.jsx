@@ -9,7 +9,7 @@ const Button = ({
   ...props
 }) => {
   const baseClasses =
-    "font-medium rounded-md transition-colors flex items-center justify-center";
+    "font-medium rounded-xl transition-colors flex items-center justify-center";
 
   const variants = {
     primary: "bg-black text-white hover:bg-gray-800",
@@ -18,9 +18,9 @@ const Button = ({
   };
 
   const sizes = {
-    sm: "px-3 py-1.5 text-sm",
-    md: "px-4 py-2 text-sm",
-    lg: "px-6 py-3 text-base",
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-4 text-lg",
   };
 
   const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
