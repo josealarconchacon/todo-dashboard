@@ -4,7 +4,7 @@ import TaskItem from "./TaskItem";
 const TaskList = ({ todos, onUpdateTodo, onDeleteTodo, pendingCount }) => {
   return (
     <div className="flex-1 bg-white p-10">
-      <div className="max-w-4xl">
+      <div className="max-w-8xl">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-3">Your Tasks</h2>
           <p className="text-gray-600 text-base">
@@ -23,7 +23,7 @@ const TaskList = ({ todos, onUpdateTodo, onDeleteTodo, pendingCount }) => {
           ) : (
             todos.map((todo) => (
               <TaskItem
-                key={todo.id}
+                key={todo._id || todo.id}
                 todo={todo}
                 onUpdate={onUpdateTodo}
                 onDelete={onDeleteTodo}

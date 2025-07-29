@@ -8,7 +8,7 @@ const TaskItem = ({ todo, onUpdate, onDelete }) => {
   const [editDescription, setEditDescription] = useState(todo.description);
 
   const handleSave = () => {
-    onUpdate(todo.id, {
+    onUpdate(todo._id || todo.id, {
       title: editTitle.trim(),
       description: editDescription.trim(),
     });
@@ -22,7 +22,7 @@ const TaskItem = ({ todo, onUpdate, onDelete }) => {
   };
 
   const toggleComplete = () => {
-    onUpdate(todo.id, { completed: !todo.completed });
+    onUpdate(todo._id || todo.id, { completed: !todo.completed });
   };
 
   if (isEditing) {
@@ -117,7 +117,7 @@ const TaskItem = ({ todo, onUpdate, onDelete }) => {
               <Edit className="h-4 w-4" />
             </button>
             <button
-              onClick={() => onDelete(todo.id)}
+              onClick={() => onDelete(todo._id || todo.id)}
               className="p-2 text-gray-400 hover:text-red-600 transition-colors"
             >
               <Trash2 className="h-4 w-4" />
