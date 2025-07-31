@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 
 const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
-  (import.meta.env.DEV ? "http://localhost:3000/api" : "/api");
+  (import.meta.env.DEV
+    ? "http://localhost:3000/api"
+    : "https://todo-backend-4ua1.onrender.com/api");
 
 const useTodos = () => {
   const [todos, setTodos] = useState([]);
@@ -81,7 +83,9 @@ const useTodos = () => {
 
       if (data.success) {
         setTodos((prev) =>
-          prev.map((todo) => (todo._id === id ? data.data : todo))
+          prev.map((todo) =>
+            todo._id === id || todo.id === id ? data.data : todo
+          )
         );
         return true;
       } else {
@@ -105,7 +109,9 @@ const useTodos = () => {
       const data = await response.json();
 
       if (data.success) {
-        setTodos((prev) => prev.filter((todo) => todo._id !== id));
+        setTodos((prev) =>
+          prev.filter((todo) => todo._id !== id && todo.id !== id)
+        );
         return true;
       } else {
         setError(data.message);
